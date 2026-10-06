@@ -1,0 +1,739 @@
+STUDYFLOW — REQUISITOS COMPLETOS DO PROJETO
+
+1. VISÃO GERAL
+
+O StudyFlow é um aplicativo mobile Android destinado a estudantes de cursos técnicos, graduação e cursos livres.
+
+Seu objetivo é centralizar o gerenciamento das disciplinas e avaliações acadêmicas, permitindo que o estudante saiba de forma rápida quais provas, trabalhos, seminários ou outras atividades devem receber atenção primeiro.
+
+O sistema utiliza uma regra automática de prioridade baseada em dois fatores:
+
+- Urgência — 60%: proximidade da data de entrega ou realização.
+- Impacto — 40%: peso da avaliação na nota da disciplina.
+
+O aplicativo deverá funcionar de maneira offline-first, mantendo os dados localmente no dispositivo.
+
+
+2. REQUISITOS FUNCIONAIS
+
+RF-01 — Cadastrar matéria
+
+Requisito:
+O sistema deverá permitir que o usuário cadastre uma nova matéria/disciplina.
+
+História de Usuário:
+Como estudante, quero cadastrar minhas matérias para organizar minhas avaliações de acordo com cada disciplina.
+
+Critérios de Aceitação:
+1. O usuário deverá conseguir acessar a opção de cadastrar uma nova matéria.
+2. O sistema deverá permitir informar o nome da matéria.
+3. O nome da matéria deverá ser obrigatório.
+4. O sistema não deverá permitir o cadastro com o nome vazio.
+5. Após salvar, a matéria deverá aparecer na lista de matérias.
+6. A matéria deverá permanecer armazenada após fechar e abrir novamente o aplicativo.
+7. O sistema deverá apresentar uma mensagem ou retorno visual indicando que o cadastro foi realizado.
+
+
+RF-02 — Listar matérias
+
+Requisito:
+O sistema deverá exibir todas as matérias cadastradas.
+
+História de Usuário:
+Como estudante, quero visualizar minhas matérias cadastradas para acessar rapidamente as atividades relacionadas a cada uma delas.
+
+Critérios de Aceitação:
+1. Todas as matérias cadastradas deverão aparecer na tela de matérias.
+2. A listagem deverá ser carregada automaticamente ao acessar a tela.
+3. Caso não existam matérias cadastradas, o sistema deverá exibir um estado vazio informando que nenhuma matéria foi encontrada.
+4. Uma matéria cadastrada deverá continuar disponível após reiniciar o aplicativo.
+5. O usuário deverá conseguir identificar claramente cada matéria da lista.
+
+
+RF-03 — Editar matéria
+
+Requisito:
+O sistema deverá permitir a edição de uma matéria cadastrada.
+
+História de Usuário:
+Como estudante, quero editar uma matéria para corrigir ou atualizar suas informações.
+
+Critérios de Aceitação:
+1. O usuário deverá conseguir selecionar uma matéria existente.
+2. O sistema deverá apresentar os dados atuais da matéria.
+3. O usuário deverá conseguir alterar o nome da matéria.
+4. O sistema não deverá permitir que o nome seja salvo vazio.
+5. Ao confirmar a alteração, a listagem deverá apresentar os novos dados.
+6. As avaliações relacionadas à matéria deverão permanecer vinculadas após a edição.
+
+
+RF-04 — Excluir matéria
+
+Requisito:
+O sistema deverá permitir excluir uma matéria cadastrada.
+
+História de Usuário:
+Como estudante, quero excluir uma matéria que não utilizo mais para manter minha organização acadêmica atualizada.
+
+Critérios de Aceitação:
+1. O usuário deverá conseguir solicitar a exclusão de uma matéria.
+2. O sistema deverá apresentar uma confirmação antes da exclusão.
+3. O usuário deverá poder cancelar a operação.
+4. A matéria somente deverá ser removida após confirmação.
+5. O sistema deverá impedir que avaliações fiquem relacionadas a uma matéria inexistente.
+6. Caso existam avaliações vinculadas, o sistema deverá alertar o usuário antes da exclusão.
+
+
+3. GERENCIAMENTO DE AVALIAÇÕES
+
+RF-05 — Cadastrar avaliação
+
+Requisito:
+O sistema deverá permitir cadastrar avaliações acadêmicas.
+
+Uma avaliação poderá representar:
+- Prova
+- Trabalho
+- Seminário
+- Projeto
+- Atividade
+- Outro tipo de compromisso avaliativo
+
+História de Usuário:
+Como estudante, quero cadastrar minhas avaliações para acompanhar todos os prazos acadêmicos em um único lugar.
+
+Critérios de Aceitação:
+1. O usuário deverá conseguir acessar a opção de nova avaliação.
+2. O cadastro deverá permitir informar:
+   - título
+   - tipo
+   - matéria
+   - data
+   - peso
+3. O título deverá ser obrigatório.
+4. A matéria deverá ser obrigatória.
+5. A data deverá ser obrigatória.
+6. O sistema deverá impedir o salvamento caso os campos obrigatórios estejam ausentes.
+7. A avaliação deverá iniciar com o status Pendente.
+8. Após salvar, a avaliação deverá aparecer nas telas correspondentes.
+9. A avaliação deverá permanecer salva depois que o aplicativo for fechado.
+
+
+RF-06 — Vincular avaliação a uma matéria
+
+Requisito:
+Toda avaliação deverá estar relacionada a uma matéria cadastrada.
+
+História de Usuário:
+Como estudante, quero relacionar cada avaliação à sua matéria para manter minhas atividades organizadas por disciplina.
+
+Critérios de Aceitação:
+1. O formulário de avaliação deverá apresentar as matérias cadastradas.
+2. O usuário deverá selecionar uma matéria.
+3. O sistema não deverá permitir uma avaliação sem matéria.
+4. Após salvar, a avaliação deverá aparecer relacionada à matéria selecionada.
+5. Alterações posteriores na matéria não deverão remover automaticamente a avaliação.
+
+
+RF-07 — Definir tipo da avaliação
+
+Requisito:
+O usuário deverá poder identificar o tipo de cada avaliação.
+
+História de Usuário:
+Como estudante, quero informar se uma atividade é prova, trabalho ou outro tipo para identificar rapidamente o tipo de compromisso.
+
+Critérios de Aceitação:
+1. O formulário deverá possuir um campo de tipo.
+2. O usuário deverá conseguir escolher entre os tipos disponíveis.
+3. O tipo selecionado deverá aparecer nos detalhes da avaliação.
+4. A informação deverá permanecer salva localmente.
+
+
+RF-08 — Registrar data da avaliação
+
+Requisito:
+O sistema deverá permitir registrar a data de realização ou entrega da avaliação.
+
+História de Usuário:
+Como estudante, quero informar quando uma avaliação acontecerá para que o StudyFlow possa calcular sua urgência.
+
+Critérios de Aceitação:
+1. O usuário deverá poder escolher uma data.
+2. O sistema deverá validar a data informada.
+3. A data deverá ser utilizada no cálculo de prioridade.
+4. A data deverá aparecer na listagem ou detalhe da avaliação.
+5. O sistema deverá conseguir identificar avaliações próximas do prazo.
+
+
+RF-09 — Registrar peso da avaliação
+
+Requisito:
+O usuário deverá poder informar o peso ou impacto da avaliação.
+
+História de Usuário:
+Como estudante, quero informar o peso de uma avaliação para que atividades mais importantes tenham maior influência na prioridade.
+
+Critérios de Aceitação:
+1. O sistema deverá disponibilizar um campo para peso.
+2. O campo deverá aceitar apenas valores válidos.
+3. O peso informado deverá ser utilizado no cálculo de prioridade.
+4. Avaliações com maior impacto deverão receber maior influência no cálculo de prioridade.
+5. O valor deverá permanecer armazenado após reiniciar o aplicativo.
+
+
+RF-10 — Editar avaliação
+
+Requisito:
+O sistema deverá permitir editar avaliações cadastradas.
+
+História de Usuário:
+Como estudante, quero editar uma avaliação quando uma data, peso ou outra informação mudar.
+
+Critérios de Aceitação:
+1. O usuário deverá conseguir abrir uma avaliação existente.
+2. O formulário deverá apresentar os dados atuais.
+3. O usuário deverá conseguir alterar título, tipo, matéria, data ou peso.
+4. Os mesmos critérios de validação do cadastro deverão ser utilizados.
+5. Ao salvar, as informações anteriores deverão ser substituídas.
+6. A prioridade deverá ser recalculada caso data ou peso sejam alterados.
+
+
+RF-11 — Excluir avaliação
+
+Requisito:
+O sistema deverá permitir excluir uma avaliação.
+
+História de Usuário:
+Como estudante, quero remover uma avaliação cadastrada incorretamente ou que foi cancelada.
+
+Critérios de Aceitação:
+1. O usuário deverá conseguir solicitar a exclusão.
+2. O aplicativo deverá solicitar confirmação.
+3. O usuário deverá poder cancelar.
+4. Após confirmar, a avaliação deverá ser removida.
+5. A avaliação removida não deverá continuar aparecendo no painel de prioridades.
+
+
+4. SISTEMA DE PRIORIDADES
+
+RF-12 — Calcular prioridade automaticamente
+
+Requisito:
+O StudyFlow deverá calcular automaticamente a prioridade de cada avaliação pendente.
+
+História de Usuário:
+Como estudante, quero que o aplicativo determine automaticamente quais atividades são mais importantes para que eu saiba onde devo concentrar meus esforços.
+
+Critérios de Aceitação:
+1. O cálculo deverá considerar a proximidade do prazo.
+2. O cálculo deverá considerar o peso da avaliação.
+3. A urgência deverá representar aproximadamente 60% da prioridade.
+4. O impacto deverá representar aproximadamente 40% da prioridade.
+5. O cálculo deverá ocorrer automaticamente.
+6. Uma alteração na data deverá provocar novo cálculo.
+7. Uma alteração no peso deverá provocar novo cálculo.
+8. Avaliações concluídas não deverão disputar prioridade com avaliações pendentes.
+
+
+RF-13 — Ordenar avaliações por prioridade
+
+Requisito:
+O painel principal deverá ordenar automaticamente as avaliações pendentes conforme sua prioridade.
+
+História de Usuário:
+Como estudante, quero ver primeiro o que exige mais atenção para decidir rapidamente qual atividade devo realizar.
+
+Critérios de Aceitação:
+1. A avaliação de maior prioridade deverá aparecer antes das demais.
+2. A ordenação deverá ser atualizada quando as informações de uma avaliação forem alteradas.
+3. Avaliações concluídas não deverão aparecer no topo da lista de pendências.
+4. A ordenação deverá ser realizada automaticamente, sem exigir ação manual.
+5. A ordem deverá permanecer correta após fechar e abrir o aplicativo.
+
+
+RF-14 — Identificar visualmente a prioridade
+
+Requisito:
+O aplicativo deverá permitir que o estudante identifique visualmente o nível de prioridade de uma avaliação.
+
+História de Usuário:
+Como estudante, quero identificar rapidamente quais avaliações são urgentes sem precisar analisar todas as datas manualmente.
+
+Critérios de Aceitação:
+1. Cada item deverá apresentar alguma indicação de prioridade.
+2. Avaliações urgentes deverão ser visualmente diferenciadas das menos urgentes.
+3. A indicação visual não poderá impedir a leitura do conteúdo.
+4. O nível apresentado deverá corresponder à prioridade calculada pelo sistema.
+
+
+5. STATUS E PROGRESSO
+
+RF-15 — Marcar avaliação como concluída
+
+Requisito:
+O usuário deverá conseguir marcar uma avaliação como concluída.
+
+História de Usuário:
+Como estudante, quero marcar uma avaliação como concluída para acompanhar meu progresso e removê-la das minhas pendências.
+
+Critérios de Aceitação:
+1. Toda nova avaliação deverá iniciar como Pendente.
+2. O usuário deverá conseguir alterar o status para Concluída.
+3. Uma avaliação concluída não deverá aparecer entre as pendências quando o filtro correspondente estiver ativo.
+4. A alteração deverá ser armazenada no banco local.
+5. O status deverá continuar correto após reiniciar o aplicativo.
+
+
+RF-16 — Reabrir uma avaliação concluída
+
+Requisito:
+O sistema deverá permitir que uma avaliação concluída retorne ao estado pendente.
+
+História de Usuário:
+Como estudante, quero reabrir uma atividade marcada como concluída por engano.
+
+Critérios de Aceitação:
+1. O usuário deverá conseguir alterar uma avaliação concluída para pendente.
+2. Após a alteração, ela deverá voltar para a fila de prioridades.
+3. Sua prioridade deverá ser recalculada.
+4. O novo status deverá permanecer salvo.
+
+
+6. FILTROS
+
+RF-17 — Filtrar avaliações por status
+
+Requisito:
+O sistema deverá disponibilizar filtros de avaliações.
+
+Filtros mínimos:
+- Todas
+- Pendentes
+- Concluídas
+
+História de Usuário:
+Como estudante, quero filtrar minhas avaliações por situação para visualizar somente as informações que preciso naquele momento.
+
+Critérios de Aceitação:
+1. A opção Todas deverá mostrar todas as avaliações.
+2. A opção Pendentes deverá mostrar apenas atividades não concluídas.
+3. A opção Concluídas deverá mostrar apenas atividades finalizadas.
+4. A troca de filtros deverá atualizar a lista imediatamente.
+5. O filtro não deverá excluir nem modificar dados.
+
+
+RF-18 — Visualizar avaliações por matéria
+
+Requisito:
+O usuário deverá conseguir visualizar as avaliações relacionadas a uma matéria específica.
+
+História de Usuário:
+Como estudante, quero visualizar somente as atividades de determinada disciplina para acompanhar minha situação naquela matéria.
+
+Critérios de Aceitação:
+1. Ao acessar uma matéria, o sistema deverá identificar suas avaliações relacionadas.
+2. Apenas avaliações daquela matéria deverão ser apresentadas.
+3. Caso nenhuma avaliação esteja cadastrada, deverá ser exibido um estado vazio.
+4. Alterações realizadas nas avaliações deverão refletir nessa listagem.
+
+
+7. PAINEL PRINCIPAL
+
+RF-19 — Exibir painel de prioridades
+
+Requisito:
+O aplicativo deverá possuir uma tela inicial com as principais pendências acadêmicas.
+
+História de Usuário:
+Como estudante, quero abrir o aplicativo e imediatamente visualizar minhas atividades mais importantes.
+
+Critérios de Aceitação:
+1. O painel deverá ser apresentado ao usuário de maneira simples e compreensível.
+2. As avaliações pendentes deverão ser ordenadas por prioridade.
+3. Cada item deverá apresentar pelo menos:
+   - título
+   - matéria
+   - data
+   - identificação da prioridade
+4. O usuário deverá conseguir acessar uma avaliação através do painel.
+5. O painel deverá ser atualizado após alterações nos dados.
+
+
+RF-20 — Informar prazo das avaliações
+
+Requisito:
+O painel deverá permitir identificar quanto tempo falta para a avaliação.
+
+História de Usuário:
+Como estudante, quero saber quantos dias faltam para cada atividade para compreender melhor sua urgência.
+
+Critérios de Aceitação:
+1. O sistema deverá comparar a data atual com a data da avaliação.
+2. Deverá ser possível identificar avaliações próximas.
+3. Avaliações com prazo vencido deverão possuir identificação adequada.
+4. O cálculo deverá ser atualizado conforme a data do dispositivo.
+
+
+8. NOTIFICAÇÕES E LEMBRETES
+
+RF-21 — Emitir notificações locais
+
+Requisito:
+O aplicativo deverá emitir lembretes locais para avaliações próximas.
+
+História de Usuário:
+Como estudante, quero receber lembretes antes das avaliações para reduzir o risco de esquecer provas ou entregas.
+
+Critérios de Aceitação:
+1. O sistema deverá permitir gerar notificações localmente no dispositivo.
+2. O funcionamento não deverá depender de servidor externo.
+3. O aplicativo poderá utilizar como padrão lembretes:
+   - 7 dias antes
+   - 3 dias antes
+   - 1 dia antes
+4. A notificação deverá identificar a avaliação.
+5. Avaliações já concluídas não deverão continuar gerando lembretes desnecessários.
+6. As notificações deverão respeitar as permissões exigidas pela versão do Android.
+
+
+9. PERSISTÊNCIA DE DADOS
+
+RF-22 — Salvar dados localmente
+
+Requisito:
+O aplicativo deverá armazenar as informações utilizando banco de dados local Room/SQLite.
+
+História de Usuário:
+Como estudante, quero que minhas informações continuem disponíveis quando eu fechar o aplicativo ou estiver sem internet.
+
+Critérios de Aceitação:
+1. Matérias deverão ser armazenadas localmente.
+2. Avaliações deverão ser armazenadas localmente.
+3. Status deverão ser armazenados localmente.
+4. Alterações deverão permanecer depois de fechar o aplicativo.
+5. O aplicativo deverá conseguir carregar as informações ao ser iniciado novamente.
+6. O funcionamento principal não deverá exigir internet.
+
+
+10. NAVEGAÇÃO E INTERFACE
+
+RF-23 — Navegação entre telas
+
+Requisito:
+O aplicativo deverá possuir navegação clara entre suas principais funções.
+
+História de Usuário:
+Como estudante, quero navegar facilmente entre início, matérias e avaliações para utilizar o aplicativo sem dificuldade.
+
+Critérios de Aceitação:
+1. O usuário deverá conseguir acessar as principais áreas do aplicativo.
+2. Deverá ser possível retornar de telas secundárias.
+3. A navegação não deverá resultar em telas sem saída.
+4. O usuário deverá saber em qual área do aplicativo está.
+5. As principais funções deverão exigir poucos passos para serem acessadas.
+
+
+RF-24 — Estados vazios
+
+Requisito:
+O sistema deverá apresentar mensagens adequadas quando não existirem informações cadastradas.
+
+História de Usuário:
+Como novo usuário, quero receber orientação quando ainda não houver matérias ou avaliações cadastradas.
+
+Critérios de Aceitação:
+1. Uma lista vazia não deverá apresentar somente uma tela em branco.
+2. O sistema deverá informar que ainda não existem dados.
+3. Sempre que apropriado, deverá existir um caminho para criar o primeiro registro.
+4. O estado vazio deverá desaparecer automaticamente após o cadastro de informações.
+
+
+RF-25 — Validação de formulários
+
+Requisito:
+O sistema deverá validar os dados antes de realizar cadastros ou alterações.
+
+História de Usuário:
+Como estudante, quero ser informado quando preencher uma informação incorretamente para evitar dados inválidos no aplicativo.
+
+Critérios de Aceitação:
+1. Campos obrigatórios deverão ser verificados.
+2. O sistema não deverá salvar registros inválidos.
+3. O usuário deverá receber indicação do problema.
+4. Dados válidos já preenchidos não deverão ser apagados devido a um erro em outro campo.
+5. Valores numéricos deverão aceitar somente formatos compatíveis.
+
+
+11. REQUISITOS NÃO FUNCIONAIS
+
+RNF-01 — Aplicação Android nativa
+
+O StudyFlow deverá ser desenvolvido como uma aplicação Android utilizando Kotlin.
+
+Critérios de Aceitação:
+- O projeto deverá compilar no Android Studio.
+- O aplicativo deverá gerar APK funcional.
+- O aplicativo deverá executar em emulador ou dispositivo Android compatível.
+
+
+RNF-02 — Interface com Jetpack Compose
+
+A interface deverá utilizar Jetpack Compose.
+
+Critérios de Aceitação:
+- As principais telas deverão utilizar componentes Compose.
+- A interface deverá reagir às alterações de estado.
+- Componentes visuais deverão apresentar comportamento consistente.
+
+
+RNF-03 — Banco de dados Room
+
+A persistência deverá utilizar Room sobre SQLite.
+
+Critérios de Aceitação:
+- Os dados deverão permanecer após o encerramento do processo do aplicativo.
+- O acesso ao banco deverá ocorrer através das estruturas previstas pelo Room.
+- Matérias e avaliações deverão possuir relacionamento consistente.
+
+
+RNF-04 — Funcionamento offline
+
+O aplicativo deverá executar suas funções principais sem conexão com a internet.
+
+Critérios de Aceitação:
+Deverão funcionar offline:
+- cadastro de matérias
+- cadastro de avaliações
+- edição
+- filtros
+- cálculo de prioridade
+- conclusão de atividades
+- consulta das informações armazenadas
+
+
+RNF-05 — Usabilidade
+
+A interface deverá ser simples e adequada ao uso cotidiano de estudantes.
+
+Critérios de Aceitação:
+- As principais ações deverão ser facilmente identificadas.
+- Os textos deverão possuir boa legibilidade.
+- Os controles deverão possuir tamanho apropriado para interação por toque.
+- O usuário não deverá precisar conhecer conceitos técnicos para utilizar o aplicativo.
+
+
+RNF-06 — Desempenho
+
+O aplicativo deverá apresentar resposta adequada durante operações comuns.
+
+Critérios de Aceitação:
+- Listagens deverão abrir sem demora perceptível em utilização normal.
+- A mudança de status deverá refletir rapidamente na interface.
+- O cálculo de prioridade não deverá causar travamentos visíveis.
+- Operações no banco não deverão bloquear a interface de maneira significativa.
+
+
+RNF-07 — Confiabilidade dos dados
+
+O aplicativo deverá preservar corretamente as informações cadastradas.
+
+Critérios de Aceitação:
+- Uma avaliação não poderá ser associada a uma matéria inexistente.
+- Atualizações não deverão criar registros duplicados indevidamente.
+- O fechamento normal do aplicativo não deverá causar perda de dados.
+- O estado salvo deverá ser reconstruído corretamente quando o aplicativo for aberto novamente.
+
+
+RNF-08 — Compatibilidade visual
+
+A interface deverá seguir os componentes e padrões do Material Design utilizados pelo Jetpack Compose.
+
+Critérios de Aceitação:
+- Botões, cards e campos deverão manter padrões visuais consistentes.
+- Cores e textos deverão possuir contraste suficiente.
+- Os componentes deverão manter organização visual entre as diferentes telas.
+
+
+12. REGRAS DE NEGÓCIO
+
+RN-01 — Prioridade
+
+A prioridade de uma avaliação deverá considerar:
+
+Prioridade = Urgência × 60% + Impacto × 40%
+
+Onde:
+- Urgência corresponde à proximidade da data da avaliação.
+- Impacto corresponde ao peso/importância da avaliação.
+
+Quanto maior o resultado, maior deverá ser a prioridade apresentada ao estudante.
+
+
+RN-02 — Avaliação concluída
+
+Uma avaliação marcada como concluída não deverá competir com avaliações pendentes na fila principal de prioridade.
+
+
+RN-03 — Nova avaliação
+
+Toda nova avaliação deverá iniciar com status Pendente.
+
+
+RN-04 — Recalcular prioridade
+
+A prioridade deverá ser recalculada sempre que houver alteração em:
+- data
+- peso
+- status
+
+
+RN-05 — Relação matéria-avaliação
+
+Toda avaliação deverá possuir uma matéria associada.
+
+
+RN-06 — Persistência
+
+Cadastros, alterações e mudanças de status deverão ser salvos localmente.
+
+
+13. FORA DO ESCOPO DO MVP
+
+Para evitar crescimento excessivo do projeto, os seguintes recursos não fazem parte da entrega inicial do StudyFlow:
+
+- login e cadastro de usuários
+- autenticação
+- sincronização em nuvem
+- sincronização entre diferentes celulares
+- painel administrativo web
+- chat entre estudantes
+- compartilhamento de atividades entre usuários
+- colaboração em grupo
+- integração obrigatória com Google Calendar
+- integração obrigatória com APIs externas
+- inteligência artificial
+- geração automática de cronogramas por IA
+
+Esses recursos poderão ser considerados em versões futuras.
+
+
+14. RESUMO DAS HISTÓRIAS DE USUÁRIO
+
+HU-01
+Como estudante, quero cadastrar matérias para organizar minhas disciplinas.
+
+HU-02
+Como estudante, quero visualizar minhas matérias para acessar minhas informações acadêmicas.
+
+HU-03
+Como estudante, quero editar minhas matérias para manter as informações atualizadas.
+
+HU-04
+Como estudante, quero excluir matérias que não utilizo mais.
+
+HU-05
+Como estudante, quero cadastrar provas, trabalhos e outras avaliações para não esquecer meus compromissos.
+
+HU-06
+Como estudante, quero relacionar uma avaliação a uma matéria para manter a organização.
+
+HU-07
+Como estudante, quero informar o tipo da avaliação para identificá-la rapidamente.
+
+HU-08
+Como estudante, quero informar a data da avaliação para acompanhar seus prazos.
+
+HU-09
+Como estudante, quero informar o peso da avaliação para que sua importância seja considerada.
+
+HU-10
+Como estudante, quero editar uma avaliação quando suas informações mudarem.
+
+HU-11
+Como estudante, quero excluir avaliações canceladas ou cadastradas incorretamente.
+
+HU-12
+Como estudante, quero que o sistema calcule automaticamente o que devo priorizar.
+
+HU-13
+Como estudante, quero visualizar primeiro as atividades mais importantes.
+
+HU-14
+Como estudante, quero identificar visualmente atividades urgentes.
+
+HU-15
+Como estudante, quero marcar atividades como concluídas.
+
+HU-16
+Como estudante, quero reabrir uma atividade concluída por engano.
+
+HU-17
+Como estudante, quero filtrar atividades entre todas, pendentes e concluídas.
+
+HU-18
+Como estudante, quero visualizar as avaliações de uma matéria específica.
+
+HU-19
+Como estudante, quero abrir o aplicativo e visualizar imediatamente minhas principais pendências.
+
+HU-20
+Como estudante, quero saber quanto tempo falta para cada avaliação.
+
+HU-21
+Como estudante, quero receber lembretes antes dos meus prazos.
+
+HU-22
+Como estudante, quero utilizar o aplicativo mesmo sem internet.
+
+HU-23
+Como estudante, quero navegar facilmente pelo aplicativo.
+
+HU-24
+Como novo usuário, quero receber orientação quando não houver informações cadastradas.
+
+HU-25
+Como estudante, quero ser avisado quando preencher um formulário incorretamente.
+
+
+15. CRITÉRIOS GERAIS DE ACEITAÇÃO DO PROJETO
+
+O StudyFlow será considerado funcional quando:
+
+1. O aplicativo instalar e executar em um dispositivo ou emulador Android.
+2. O usuário conseguir cadastrar matérias.
+3. O usuário conseguir editar e consultar matérias.
+4. O usuário conseguir cadastrar avaliações.
+5. Cada avaliação puder ser vinculada a uma matéria.
+6. Data e peso forem considerados no cálculo da prioridade.
+7. O sistema ordenar corretamente as pendências.
+8. O usuário conseguir marcar uma avaliação como concluída.
+9. Os filtros Todas, Pendentes e Concluídas funcionarem corretamente.
+10. Os dados permanecerem armazenados após fechar e abrir novamente o aplicativo.
+11. As funções principais operarem sem conexão com internet.
+12. O sistema apresentar lembretes locais para avaliações próximas.
+13. Não existirem erros bloqueadores durante o fluxo principal.
+14. A interface permitir realizar as operações básicas sem dificuldade.
+15. O projeto utilizar Kotlin, Jetpack Compose e Room conforme definido em seu escopo.
+
+
+16. MVP DO STUDYFLOW
+
+Para a entrega acadêmica, o núcleo obrigatório pode ser resumido em cinco pontos:
+
+1. CADASTRAR
+Cadastrar matérias e avaliações.
+
+2. ORGANIZAR
+Relacionar cada avaliação à sua respectiva matéria.
+
+3. PRIORIZAR
+Calcular automaticamente o que é mais urgente/importante.
+
+4. LEMBRAR
+Enviar lembretes locais antes do prazo.
+
+5. CONCLUIR
+Permitir que o estudante acompanhe o que está pendente e o que já foi realizado.
+
+Esse conjunto representa a essência do StudyFlow e deve ter prioridade sobre funcionalidades adicionais.

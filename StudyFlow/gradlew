@@ -1,0 +1,15 @@
+#!/bin/sh
+APP_HOME=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+WRAPPER_JAR="$APP_HOME/gradle/wrapper/gradle-wrapper.jar"
+if [ ! -f "$WRAPPER_JAR" ]; then
+  echo "Preparando Gradle Wrapper 8.9 na primeira execução..."
+  if command -v curl >/dev/null 2>&1; then
+    curl -L --fail -o "$WRAPPER_JAR" "https://raw.githubusercontent.com/gradle/gradle/v8.9.0/gradle/wrapper/gradle-wrapper.jar" || exit 1
+  elif command -v wget >/dev/null 2>&1; then
+    wget -O "$WRAPPER_JAR" "https://raw.githubusercontent.com/gradle/gradle/v8.9.0/gradle/wrapper/gradle-wrapper.jar" || exit 1
+  else
+    echo "curl/wget não encontrado. Baixe o wrapper manualmente."
+    exit 1
+  fi
+fi
+exec java -classpath "$WRAPPER_JAR" org.gradle.wrapper.GradleWrapperMain "$@"
